@@ -17,6 +17,7 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.text.TextPaint;
 
+import net.osmand.AndroidUtils;
 import net.osmand.plus.OsmAndFormatter;
 import net.osmand.plus.OsmandApplication;
 import net.osmand.plus.R;
@@ -193,9 +194,10 @@ public class NextTurnInfoWidget extends TextInfoWidget {
 			canvas.drawPath(pathForTurn, paintRouteDirection);
 			canvas.drawPath(pathForTurn, paintBlack);
 			if(textPaint != null ) {
+				textPaint.setTextSize(AndroidUtils.spToPx(ctx, 20));
 				if (turnType != null && !mini && turnType.getExitOut() > 0) {
 					canvas.drawText(turnType.getExitOut() + "", centerText.x, 
-							centerText.y - textPaint.ascent() / 2, textPaint);
+							centerText.y - textPaint.ascent() / 3, textPaint);
 				}
 			}
 		}

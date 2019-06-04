@@ -890,8 +890,6 @@ public class RouteInfoWidgetsFactory {
 		private int widgetTurnLaneMargin = 2;
 		private int widgetTurnLaneSize = 36;
 
-		private final Log LOG = PlatformUtil.getLog(LanesDrawable.class);
-
 		LanesDrawable(MapActivity ctx, float scaleCoefficent) {
 			this.ctx = ctx;
 			OsmandSettings settings = ctx.getMyApplication().getSettings();
