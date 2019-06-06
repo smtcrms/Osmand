@@ -18,7 +18,6 @@ import android.os.BatteryManager;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.text.format.DateFormat;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,7 +25,6 @@ import android.widget.TextView;
 
 import net.osmand.AndroidUtils;
 import net.osmand.Location;
-import net.osmand.PlatformUtil;
 import net.osmand.binary.RouteDataObject;
 import net.osmand.data.LatLon;
 import net.osmand.data.RotatedTileBox;
@@ -64,7 +62,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.logging.Log;
 
 public class RouteInfoWidgetsFactory {
 
@@ -883,21 +880,16 @@ public class RouteInfoWidgetsFactory {
 		private float laneHalfSize;
 		private static final float miniCoeff = 2f;
 		private final boolean leftSide;
-		private float imgMinDelta;
-		private float imgMargin;
-
-		private int widgetTurnLaneMinDelta = 18;
-		private int widgetTurnLaneMargin = 2;
-		private int widgetTurnLaneSize = 36;
+		private int imgMinDelta;
+		private int imgMargin;
 
 		LanesDrawable(MapActivity ctx, float scaleCoefficent) {
 			this.ctx = ctx;
 			OsmandSettings settings = ctx.getMyApplication().getSettings();
-			DisplayMetrics metrics = ctx.getResources().getDisplayMetrics();
 			leftSide = settings.DRIVING_REGION.get().leftHandDriving;
-			imgMinDelta = widgetTurnLaneMinDelta * metrics.density;
-			imgMargin = widgetTurnLaneMargin * metrics.density;
-			laneHalfSize = widgetTurnLaneSize * metrics.density / 2;
+			imgMinDelta = ctx.getResources().getDimensionPixelSize(R.dimen.widget_turn_lane_min_delta);
+			imgMargin = ctx.getResources().getDimensionPixelSize(R.dimen.widget_turn_lane_margin);
+			laneHalfSize = ctx.getResources().getDimensionPixelSize(R.dimen.widget_turn_lane_size) / 2;
 
 			this.scaleCoefficient = scaleCoefficent;
 

@@ -194,10 +194,11 @@ public class NextTurnInfoWidget extends TextInfoWidget {
 			canvas.drawPath(pathForTurn, paintRouteDirection);
 			canvas.drawPath(pathForTurn, paintBlack);
 			if(textPaint != null ) {
-				textPaint.setTextSize(AndroidUtils.spToPx(ctx, 20));
+				float textSize = AndroidUtils.spToPx(ctx, 20);
+				textPaint.setTextSize(textSize);
 				if (turnType != null && !mini && turnType.getExitOut() > 0) {
 					canvas.drawText(turnType.getExitOut() + "", centerText.x, 
-							centerText.y - textPaint.ascent() / 3, textPaint);
+							centerText.y + textSize/2.7f, textPaint);
 				}
 			}
 		}
